@@ -280,7 +280,7 @@ static void refresh_display(SDL_DisplayID d) {
     float density = dm->pixel_density > 0 ? dm->pixel_density : 1;
     WinSize desk = {(int)lroundf(dm->w * density), (int)lroundf(dm->h * density)};
     const SDL_DisplayMode *cur = SDL_GetCurrentDisplayMode(d);  // (exclusive fullscreen: the mode in use)
-    float hz = cur && cur->refresh_rate > 0 ? cur->refresh_rate : dm->refresh_rate;
+    float hz = 75.0f; // Fixed HZ to test my monitor not being detected.
     settings_fps_for_display(hz);  // (Frame rate > Match display)
     pthread_mutex_lock(&g_m);
     g_hz = hz;
